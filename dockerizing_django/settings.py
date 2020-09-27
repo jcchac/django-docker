@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'dockerizing_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get('DJANGO_SQL_ENGINE'),
+        'NAME': os.environ.get('DJANGO_SQL_DATABASE'),
+        'USER': os.environ.get('DJANGO_SQL_USER'),
+        'PASSWORD': os.environ.get('DJANGO_SQL_PASSWORD'),
+        'HOST': os.environ.get('DJANGO_SQL_HOST'),
+        'PORT': os.environ.get('DJANGO_SQL_PORT'),
     }
 }
 
