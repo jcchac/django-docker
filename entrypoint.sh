@@ -11,11 +11,4 @@ then
     echo "PostgreSQL started"
 fi
 
-# Instead of running in every container start or re-start
-# python manage.py flush --no-input
-# python manage.py migrate
-# Run manually
-#       docker-compose exec web python manage.py flush --no-input
-#       docker-compose exec web python manage.py migrate
-
 exec "$@"
