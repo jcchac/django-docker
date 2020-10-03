@@ -28,16 +28,17 @@ FROM base
 
 ENV HOME=/home/app \
     APP_HOME=/home/app/web
+RUN mkdir -p $APP_HOME/static
 WORKDIR $APP_HOME
 
 # Create directory for the app user and the user (non-root)
 RUN addgroup -S appgroup \
     && adduser -S appuser -G appgroup \
-    && chown -R appuser $APP_HOME \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && chown -R appuser $APP_HOME 
 
 # Copy venv from builder stage
 COPY --from=builder /.venv /.venv 
+COPY --from=builder /usr/lib /usr/lib 
 ENV PATH="/.venv/bin:$PATH"
 
 COPY ./ ./
