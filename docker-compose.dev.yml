@@ -10,7 +10,9 @@ services:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     web:
-        build: ./
+        build: 
+            context: ./
+            dockerfile: Dockerfile.dev
         command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - ./:/usr/src/app/
