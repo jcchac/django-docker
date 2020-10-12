@@ -18,10 +18,10 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from media_upload.views import image_upload
+from media_upload.views import upload
 
 urlpatterns = [
-    path('', image_upload, name='upload'),
+    path('', upload, name='upload'),
     path('admin/', admin.site.urls),
 ]
 
