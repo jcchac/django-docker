@@ -28,13 +28,14 @@ FROM base
 
 ENV HOME=/home/app \
     APP_HOME=/home/app/web
-RUN mkdir -p $APP_HOME/static
+RUN mkdir -p $APP_HOME/static \
+    && mkdir $APP_HOME/media
 WORKDIR $APP_HOME
 
 # Create directory for the app user and the user (non-root)
 RUN addgroup -S appgroup \
     && adduser -S appuser -G appgroup \
-    && chown -R appuser $APP_HOME 
+    && chown -R appuser $APP_HOME
 
 # Copy venv from builder stage
 COPY --from=builder /.venv /.venv 
