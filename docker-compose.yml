@@ -21,11 +21,6 @@ services:
             - ./.env
         depends_on: 
             - db
-    tests:
-        build: ./
-        command: python manage.py test
-        env_file:
-            - ./.env
     nginx:
         build: ./nginx
         volumes:
