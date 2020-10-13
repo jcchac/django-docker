@@ -22,6 +22,15 @@ services:
             - ./.env
         depends_on: 
             - db
+    tests:
+        build:
+            context: ./
+            dockerfile: Dockerfile.dev
+        volumes:
+            - ./:/usr/src/app/
+        command: python manage.py test
+        env_file:
+            - ./.env
 
 volumes:
     postgres_data:
