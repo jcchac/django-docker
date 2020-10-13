@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t jcchac/django-docker -f Dockerfile.dev .
+
+script:
+    - docker run jcchac/django-docker python manage.py test
