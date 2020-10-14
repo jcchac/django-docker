@@ -9,10 +9,10 @@ before_script:
     - psql -c 'create database test_db;' -U postgres
 
 env:
-    - DJANGO_SECRET_KEY='SecretKeyForUseOnTravis'
-    - DJANGO_ALLOWED_HOSTS='127.0.0.1'
-    - DJANGO_SQL_ENGINE='django.db.backends.postgresql'
-    - DJANGO_SQL_DATABASE='test_db'
+    - export DJANGO_SECRET_KEY='SecretKeyForUseOnTravis'
+    - export DJANGO_ALLOWED_HOSTS='127.0.0.1'
+    - export DJANGO_SQL_ENGINE='django.db.backends.postgresql'
+    - export DJANGO_SQL_DATABASE='test_db'
 
 install:
     - pipenv install
