@@ -9,9 +9,8 @@ before_script:
     - psql -c 'create database test_db;' -U postgres
 
 install:
-    - pip install pipenv
     - pipenv install
-    - pipenv install psycopg2 --quiet
+    - pipenv install psycopg2
 
 script:
-    python manage.py test
+    pipenv run python manage.py test
