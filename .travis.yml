@@ -4,8 +4,9 @@ python:
 services:
     - docker
 
-before_install:
-    - docker build -t jcchac/django-docker -f Dockerfile.dev .
+# before_install:
+#     - docker build -t jcchac/django-docker -f Dockerfile.dev .
 
 script:
-    - docker run jcchac/django-docker python manage.py test
+    docker-compose -f docker-compose.dev.yml run web python manage.py test
+    # - docker run jcchac/django-docker python manage.py test
